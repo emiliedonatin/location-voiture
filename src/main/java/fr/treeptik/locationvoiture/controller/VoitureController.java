@@ -29,6 +29,7 @@ public class VoitureController {
 	@RequestMapping("/hello")
 	public void sayHello() {
 
+		// c'est juste pour tester la connection 
 		System.out.println("Hello World");
 
 	}
