@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
-
-
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,16 +11,12 @@
 </head>
 <body>
 
-	<fmt:setBundle basename="messages" />
-	
-	
-
-	<h1><fmt:message key="saisie-voiture.titre"/></h1>
+	<h1>Modifier une voiture</h1>
 	<br />
 
-	<form:form action="voiture.do" commandName="voiture" method="POST">
+	<form:form action="modifier.do" commandName="voiture" method="POST">
 	
-
+	<form:hidden path="id"/>
 
 		<table>
 		
