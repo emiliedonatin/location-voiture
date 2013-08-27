@@ -10,10 +10,10 @@
 <title>Saisie voiture</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 
 	<h1>Modifier une voiture</h1>
 	<br />
-
 	<form:form action="modifier.do" commandName="voiture" method="POST">
 	
 	<form:hidden path="id"/>
@@ -34,6 +34,6 @@
 		</table>
 
 	</form:form>
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>

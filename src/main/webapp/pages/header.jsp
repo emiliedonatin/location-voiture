@@ -9,12 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
 
-	<%!int pageCount = 0; void addCount() {pageCount++;}%>
+
+	<%!
+	int pageCount = 0; void addCount() {pageCount++;}%>
 	<%addCount();%>
 
-<html>
+
 <head>
 <title>The include Directive Example</title>
 </head>
@@ -22,7 +23,7 @@
 	<center>
 		<h2>Bienvenue sur notre site de location de voiture</h2>
 		
-		<a href="<c:url value="/location-voiture/j_spring_security_logout"/>">Déconnexion</a>
+		<a href="/location-voiture/j_spring_security_logout">Déconnexion</a>
 		<p>
 			La page a été visitée <%=pageCount%> fois.
 		</p>

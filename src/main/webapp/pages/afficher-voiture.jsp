@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<%@ include file="header.jsp" %>
+
 	<h1>Afficher voiture</h1>
 	<br />
 	
@@ -19,6 +21,6 @@
 	${voiture.marque} <br/>
 	${voiture.modele} <br/>
 	
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>

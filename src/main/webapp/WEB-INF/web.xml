@@ -42,7 +42,7 @@
 	</context-param>
 
 	<session-config>
-		<!-- Default to 5 minute session timeouts -->
+		<!-- Pour que la session se déconnecte automatiquement au bout de 5min d'inactivité -->
 		<session-timeout>5</session-timeout>
 	</session-config>
 	

@@ -15,7 +15,7 @@
 <title>Saisie voiture</title>
 </head>
 <body>
-
+<%@ include file="header.jsp" %>
 	<fmt:setBundle basename="messages" />
 	
 	
@@ -43,6 +43,6 @@
 		</table>
 
 	</form:form>
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>
