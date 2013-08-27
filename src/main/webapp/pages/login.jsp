@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<form action="j_spring_security_check" method="POST">
+	<form action="/location-voiture/j_spring_security_check" method="POST">
 		Login : <input type="text" name="j_username"> Password : <input
 			type="password" name="j_password"> <input type="submit"
 			value="Login">

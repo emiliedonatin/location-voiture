@@ -77,27 +77,28 @@
 	<security:global-method-security
 		jsr250-annotations="enabled" />
 
-	<security:http pattern="/login.jsp" security="none" />
+	<security:http pattern="/pages/login.jsp" security="none" />
 
 	<security:http>
-		<security:form-login login-page="/login.jsp"
+		<security:form-login login-page="/pages/login.jsp"
 			default-target-url="/voiture.do" />
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
+<!-- 		<security:form-login/> -->
 	</security:http>
 
 	<security:authentication-manager>
-		<!-- <security:authentication-provider> -->
-		<!-- <security:user-service> -->
-		<!-- <security:user name="admin" password="AQWZSX" authorities="ROLE_USER"/> -->
-		<!-- </security:user-service> -->
-		<!-- </security:authentication-provider> -->
-
 		<security:authentication-provider>
-			<security:jdbc-user-service
-				data-source-ref="dataSource"
-				users-by-username-query="Select nom as login, password, 'true' as enabled From users where nom=?"
-				authorities-by-username-query="Select nom, role from users u join roles r on r.userid=u.id where u.nom=? " />
+		<security:user-service>
+		<security:user name="admin" password="AQWZSX" authorities="ROLE_USER"/>
+		</security:user-service>
 		</security:authentication-provider>
+
+<!-- 		<security:authentication-provider> -->
+<!-- 			<security:jdbc-user-service -->
+<!-- 				data-source-ref="dataSource" -->
+<!-- 				users-by-username-query="Select nom as login, password, 'true' as enabled From users where nom=?" -->
+<!-- 				authorities-by-username-query="Select nom, role from users u join roles r on r.userid=u.id where u.nom=? " /> -->
+<!-- 		</security:authentication-provider> -->
 
 	</security:authentication-manager>
 
