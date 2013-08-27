@@ -4,7 +4,8 @@
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-<%-- <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%> --%>
+
+
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,6 +15,9 @@
 <title>Saisie voiture</title>
 </head>
 <body>
+
+<%@ include file="header.jsp" %>
+
 
 	<h1>Liste des voitures</h1>
 	<br />
@@ -48,8 +52,7 @@
 	</table>
 	
 	<br/>
-	
-	Super Voiture : ${supervoiture.marque}
 
+<%@ include file="footer.jsp" %>
 </body>
 </html>
