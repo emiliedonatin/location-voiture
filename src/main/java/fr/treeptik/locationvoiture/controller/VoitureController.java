@@ -1,8 +1,5 @@
 package fr.treeptik.locationvoiture.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +19,14 @@ public class VoitureController {
 
 	@Autowired
 	private VoitureService voitureService;
-	
+
 	@Autowired
 	private VoitureValidator voitureValidator;
 
 	@RequestMapping("/hello")
 	public void sayHello() {
 
-		// c'est juste pour tester la connection 
+		// c'est juste pour tester la connection
 		System.out.println("Hello World");
 
 	}
@@ -53,13 +50,12 @@ public class VoitureController {
 		// Le bindingresult récupère les données si la saisie est incorrecte
 
 		voitureValidator.validate(voiture, errors);
-		
-		if(errors.hasErrors()){
+
+		if (errors.hasErrors()) {
 			return new ModelAndView("saisie-voiture", "voiture", voiture);
-			
+
 		}
-		
-		
+
 		System.out.println("Voiture marque : " + voiture.getMarque());
 		System.out.println("Voiture modele : " + voiture.getModele());
 
@@ -72,11 +68,17 @@ public class VoitureController {
 	@RequestMapping(value = "/voitures.do", method = RequestMethod.GET)
 	public ModelAndView findAll() throws ServiceException {
 
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("voitures", voitureService.findAll());
-		params.put("supervoiture", new Voiture(5, "Super Voiture", "Modele de Ouf"));
+		// Si on veut passer plusieurs paramètres dans la liste on peut faire
+		// aussi une map
 
-		return new ModelAndView("list-voiture", params);
+		// Map<String, Object> params = new HashMap<String, Object>();
+		// params.put("voitures", voitureService.findAll());
+		// params.put("supervoiture", new Voiture(5, "Super Voiture",
+		// "Modele de Ouf"));
+		//
+		// return new ModelAndView("list-voiture", params);
+
+		return new ModelAndView("list-voiture", "voitures", voitureService.findAll());
 	}
 
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
@@ -87,23 +89,27 @@ public class VoitureController {
 		return "redirect:voitures.do";
 
 	}
-	
+
 	@RequestMapping(value = "/modifier.do", method = RequestMethod.GET)
-	public String modifier(Voiture voiture) throws ServiceException{
-		
-		voitureService.remove(voiture);
-		
-		return "redirect:voiture.do";
-		
+	public ModelAndView initModifier(Voiture voiture) throws ServiceException {
+
+		voiture = voitureService.findById(voiture.getId());
+
+		return new ModelAndView("modifier-voiture", "voiture", voiture);
+
 	}
-	
+
 	@RequestMapping(value = "/modifier.do", method = RequestMethod.POST)
-	public String modifier2(Voiture voiture) throws ServiceException{
-		
-		Voiture v = voitureService.save(voiture);
-		
-		return "redirect:voitures.do";
-		
+	public ModelAndView modifier(@Valid Voiture voiture, BindingResult errors) throws ServiceException {
+
+		if (errors.hasErrors()) {
+			return new ModelAndView("modifier-voiture", "voiture", voiture);
+
+		}
+
+		voitureService.update(voiture);
+
+		return new ModelAndView("redirect:voitures.do");
 	}
 
 }
