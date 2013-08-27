@@ -83,6 +83,7 @@
 		<security:form-login login-page="/pages/login.jsp"
 			default-target-url="/voiture.do" />
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
+		<security:logout/>
 <!-- 		<security:form-login/> -->
 	</security:http>
 

@@ -21,6 +21,8 @@
 <body>
 	<center>
 		<h2>Bienvenue sur notre site de location de voiture</h2>
+		
+		<a href="<c:url value="/location-voiture/j_spring_security_logout"/>">Déconnexion</a>
 		<p>
 			La page a été visitée <%=pageCount%> fois.
 		</p>
